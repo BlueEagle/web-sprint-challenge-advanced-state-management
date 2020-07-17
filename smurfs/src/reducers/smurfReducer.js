@@ -1,4 +1,4 @@
-import { FETCH_SMURFS_SUCCESS, FETCH_SMURFS_START, POST_SMURFS_START, POST_SMURFS_SUCCESS } from '../actions'
+import { FETCH_SMURFS_SUCCESS, FETCH_SMURFS_START, FETCH_SMURFS_ERROR, POST_SMURFS_START, POST_SMURFS_SUCCESS, POST_SMURFS_ERROR } from '../actions'
 
 const initialState = {
   isPosting: false,
@@ -21,19 +21,30 @@ const smurfReducer = (state = initialState, action) => {
         smurfData: action.payload,
         isLoading: false,
         error: null
-      } // do error too!
+      }
+    case FETCH_SMURFS_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        error: `Error fetching smurfs data: ${action.payload}`
+      }
     case POST_SMURFS_START:
       return {
         ...state,
         isPosting: true
       }
     case POST_SMURFS_SUCCESS:
-      console.log(`Post success! ${action.payload}`)
       return {
         ...state,
         smurfData: action.payload,
         isPosting: false,
         error: null
+      }
+    case POST_SMURFS_ERROR:
+      return {
+        ...state,
+        isPosting: false,
+        error: `Error posting smurfs data: ${action.payload}`
       }
     default:
       return state
