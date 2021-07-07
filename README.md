@@ -24,10 +24,25 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What problem does the context API help solve?
+
+The context API solves the problem of state drilling and managing state across a number of components.
+
 2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+Actions are a type of information that is sent to a reducer including type and potentially a payload of data. This action information is used by the reducer to decide what to do next. The store is a place where Redux keeps state information, separate from any specific component.
+
 3. What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Application state is state that your entire application can access. It may be used to hold dynamic information that is displayed on a navbar for instance, or any data that is used across the site.
+Component state is state held in a single component, or small number of them which does not need to be accessed anywhere else in your app. This may be good for form values that do not need to be used anywhere beyond login/registration.
+
 4. Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+redux thunk allows us to make action creators that return a function instead of an object. This is useful for returning asynchronous functions who's data will not be ready until it is finished running.
+
 5. What is your favorite state management system you've learned and this sprint? Please explain why!
+
+So far I like the context API the most for state management. It makes state management very flexible and is extremely easy to implement. Although I do enjoy Redux after much of the boilerplate is in place.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 
